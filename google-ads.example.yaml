@@ -1,0 +1,7 @@
+# Copie para google-ads.yaml e preencha. O arquivo real nunca vai para o Git.
+client_id: SEU_OAUTH_CLIENT_ID
+client_secret: SEU_OAUTH_CLIENT_SECRET
+refresh_token: SEU_OAUTH_REFRESH_TOKEN
+use_proto_plus: true
+# Use somente se o acesso for feito por uma conta administradora (MCC):
+# login_customer_id: 1234567890

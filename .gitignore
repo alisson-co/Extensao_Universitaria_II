@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .env
 .vscode/
+# Credenciais e configuracao local
+google-ads.yaml
+config.yaml
+*credentials*.json
