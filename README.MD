@@ -8,12 +8,12 @@ Coleta dados de campanhas do Google Ads e os armazena no Google Cloud Storage, c
 python -m venv .venv
 .venv\Scripts\activate
 python -m pip install -r requirements.txt
-copy google-ads.example.yaml google-ads.yaml
 copy config.example.yaml config.yaml
 gcloud auth application-default login
+python src/gerar_refresh_token.py --client-secret CAMINHO_DO_JSON
 ```
 
-Preencha `google-ads.yaml` e `config.yaml`. Esses arquivos ficam fora do Git.
+Preencha `config.yaml`. O último comando abre o navegador: entre com a conta que tem acesso ao Google Ads para criar `google-ads.yaml`. Se usar uma conta administradora (MCC), acrescente `--login-customer-id ID`. Esses arquivos e o JSON da credencial ficam fora do Git.
 
 ## Execução
 

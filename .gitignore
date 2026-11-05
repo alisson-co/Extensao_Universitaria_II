@@ -7,3 +7,4 @@ __pycache__/
 google-ads.yaml
 config.yaml
 *credentials*.json
+client_secret*.json
