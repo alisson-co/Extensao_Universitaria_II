@@ -13,6 +13,7 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 from coleta import coletar_campanhas, montar_consulta  # noqa: E402
+from gerar_refresh_token import montar_configuracao  # noqa: E402
 from main import definir_periodo, executar  # noqa: E402
 from validacao import validar_execucao  # noqa: E402
 
@@ -192,6 +193,26 @@ class TestFluxo(unittest.TestCase):
         del bucket.arquivos[registro["files"][0]["path"]]
 
         self.assertTrue(validar_execucao(bucket, registro["execution_id"]))
+
+    def test_configuracao_inclui_campos_exigidos(self):
+        credenciais = SimpleNamespace(
+            client_id="id", client_secret="segredo", refresh_token="token"
+        )
+
+        configuracao = montar_configuracao(credenciais, None)
+
+        self.assertIs(configuracao["use_proto_plus"], True)
+        self.assertEqual(configuracao["refresh_token"], "token")
+        self.assertNotIn("login_customer_id", configuracao)
+
+    def test_configuracao_aceita_conta_administradora(self):
+        credenciais = SimpleNamespace(
+            client_id="id", client_secret="segredo", refresh_token="token"
+        )
+
+        configuracao = montar_configuracao(credenciais, "1234567890")
+
+        self.assertEqual(configuracao["login_customer_id"], "1234567890")
 
     def test_periodo_padrao_e_o_dia_anterior(self):
         self.assertEqual(
