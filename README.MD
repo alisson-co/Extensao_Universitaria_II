@@ -15,6 +15,8 @@ python src/gerar_refresh_token.py --client-secret CAMINHO_DO_JSON
 
 Preencha `config.yaml`. O último comando abre o navegador: entre com a conta que tem acesso ao Google Ads para criar `google-ads.yaml`. Se usar uma conta administradora (MCC), acrescente `--login-customer-id ID`. Esses arquivos e o JSON da credencial ficam fora do Git.
 
+Em `config.yaml`, `project_id` é o projeto do Google Cloud que contém o bucket, e `customer_id` deve ser o ID de uma **conta de anúncios**. A API não retorna métricas de campanha de uma conta administradora. Se o acesso for feito por uma MCC, mantenha em `customer_id` a conta de anúncios e informe o ID da MCC em `login_customer_id`, no `google-ads.yaml`.
+
 ## Execução
 
 ```powershell
