@@ -1,4 +1,5 @@
 # Copie para config.yaml e preencha. O arquivo real nunca vai para o Git.
-customer_id: "1234567890"  # Conta do Google Ads, somente números
+project_id: seu-projeto-google-cloud
+customer_id: "1234567890"  # Conta de anúncios, somente números
 bucket_name: data-lake-google-ads-exemplo
 google_ads_config: google-ads.yaml

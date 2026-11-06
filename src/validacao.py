@@ -73,7 +73,9 @@ def main():
     with open(argumentos.config, encoding="utf-8") as arquivo:
         config = yaml.safe_load(arquivo)
 
-    bucket = storage.Client().bucket(config["bucket_name"])
+    bucket = storage.Client(project=config["project_id"]).bucket(
+        config["bucket_name"]
+    )
     problemas = validar_execucao(bucket, argumentos.execution_id)
 
     if problemas:
